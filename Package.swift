@@ -2,7 +2,7 @@
 import PackageDescription
 
 let deps: [Package.Dependency] = [
-    .github("camdenfullmer/swift-toolchain-sqlite", branch: "support-fts5-compilation")
+    .package(url: "https://github.com/camdenfullmer/swift-toolchain-sqlite", branch: "support-fts5-compilation"),
 ]
 
 let targets: [Target] = [
