@@ -1,6 +1,9 @@
 // swift-tools-version:5.9
 import PackageDescription
 
+/// Check if the system SQLite should be used
+let useSystemSQLite = ProcessInfo.processInfo.environment["USE_SYSTEM_SQLITE"] == "1"
+
 let deps: [Package.Dependency] = [
     .github("swiftlang/swift-toolchain-sqlite", exact: "1.0.4")
 ]
@@ -8,7 +11,7 @@ let deps: [Package.Dependency] = [
 let targets: [Target] = [
     .target(
         name: "SQLite",
-        dependencies: [
+        dependencies: useSystemSQLite ? [] : [
             .product(name: "SwiftToolchainCSQLite", package: "swift-toolchain-sqlite", condition: .when(platforms: [.linux, .windows, .android]))
         ],
         exclude: [
