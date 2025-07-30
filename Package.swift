@@ -1,5 +1,6 @@
 // swift-tools-version:5.9
 import PackageDescription
+import Foundation
 
 /// Check if the system SQLite should be used
 let useSystemSQLite = ProcessInfo.processInfo.environment["USE_SYSTEM_SQLITE"] == "1"
